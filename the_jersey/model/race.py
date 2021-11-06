@@ -55,10 +55,19 @@ class Race:
                 if l > 0:
                     line = strline.split(';')
                     races.append(
-                        Race('TDF', int(line[COL_YEAR]), int(line[COL_EDITION]), line[COL_FIRST_WINNER],
-                             line[COL_SECOND_WINNER], line[COL_THIRD_WINNER], line[COL_TEAM],
-                             line[COL_BIKE], int(line[COL_NB_STEPS]), float(line[COL_DISTANCE]),
-                             float(line[COL_AVERAGE_SPEED] if line[COL_AVERAGE_SPEED] else 0),
-                             line[COL_MOUNTAN_WINNER], line[COL_POINTS_WINNER], line[COL_YOUNG_WINNER],
-                             line[COL_FIGHT_WINNER][:-1]))
+                        Race('TDF',
+                             int(line[COL_YEAR]),
+                             int(line[COL_EDITION]) if line[COL_EDITION] else None,
+                             line[COL_FIRST_WINNER].strip(),
+                             line[COL_SECOND_WINNER].strip(),
+                             line[COL_THIRD_WINNER].strip(),
+                             line[COL_TEAM].strip(),
+                             line[COL_BIKE].strip(),
+                             int(line[COL_NB_STEPS]) if line[COL_NB_STEPS] else None,
+                             float(line[COL_DISTANCE]) if line[COL_DISTANCE] else None,
+                             float(line[COL_AVERAGE_SPEED]) if line[COL_AVERAGE_SPEED] else None,
+                             line[COL_MOUNTAN_WINNER].strip(),
+                             line[COL_POINTS_WINNER].strip(),
+                             line[COL_YOUNG_WINNER].strip(),
+                             line[COL_FIGHT_WINNER].strip()))
         return races
